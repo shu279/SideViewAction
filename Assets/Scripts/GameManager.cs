@@ -4,11 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject gameOverText;
-    [SerializeField] GameObject gameClearText;
-    [SerializeField] Text scoreText;
-    [SerializeField] Clock timerClock;
-
+    [SerializeField] GameStatus gameStatus;
     const int MAX_SCORE = 9999;
     int score = 0;
     [SerializeField] float time;
@@ -16,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        scoreText.text = score.ToString();
+        
         initTime = time;
     }
 
@@ -27,17 +23,17 @@ public class GameManager : MonoBehaviour
         {
             score = MAX_SCORE;
         }
-        scoreText.text = score.ToString();
+        gameStatus.SetScore(score);
     }
 
-    public void GameOver()
+    public void GameOver(GameOverKind gameOverKind)
     {
-        gameOverText.SetActive(true);
+        gameStatus.ShowGameOver(gameOverKind);
         Invoke("RestartScene", 1.5f);
     }
     public void GameClear()
     {
-        gameClearText.SetActive(true);
+        gameStatus.ShowGameClear();
         Invoke("RestartScene", 1.5f);
     }
 
@@ -49,6 +45,17 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         time = time - Time.deltaTime;
-        timerClock.SetTime(time, initTime);
+        if(time < 0)
+        {
+            GameOver(GameOverKind.TimeOver);
+        }
+        else
+        {
+            gameStatus.clock.SetTime(time, initTime);
+        }
     }
+}
+public enum GameOverKind
+{
+    TimeOver,Fall,EnemyAttack,Trap
 }

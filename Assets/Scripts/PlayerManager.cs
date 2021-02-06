@@ -148,7 +148,7 @@ public class PlayerManager : MonoBehaviour
         animator.Play("GirlDeathAnimation");
         BoxCollider2D boxcollider2D = GetComponent<BoxCollider2D>();
         Destroy(boxcollider2D);
-        gameManager.GameOver();
+        gameManager.GameOver(GameOverKind.Fall);
     }
 
     private Vector3 offset;
