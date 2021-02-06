@@ -113,7 +113,11 @@ public class PlayerManager : MonoBehaviour
         }
         if (collision.gameObject.tag=="Trap")
         {
-            PlayerDeath();
+            PlayerDeath(GameOverKind.Trap);
+        }
+        if (collision.gameObject.tag == "FallZone")
+        {
+            PlayerDeath(GameOverKind.Fall);
         }
         if (collision.gameObject.tag == "Finish")
         {
@@ -136,11 +140,11 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 //横から
-                PlayerDeath();
+                PlayerDeath(GameOverKind.EnemyAttack);
             }
         }
     }
-    void PlayerDeath()
+    void PlayerDeath(GameOverKind gameOverKind)
     {
         isDead = true;
         rigidbody2D.velocity = new Vector2(0, 0);
@@ -148,7 +152,7 @@ public class PlayerManager : MonoBehaviour
         animator.Play("GirlDeathAnimation");
         BoxCollider2D boxcollider2D = GetComponent<BoxCollider2D>();
         Destroy(boxcollider2D);
-        gameManager.GameOver(GameOverKind.Fall);
+        gameManager.GameOver(gameOverKind);
     }
 
     private Vector3 offset;

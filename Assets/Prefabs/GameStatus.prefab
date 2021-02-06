@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 771689805415257319}
   - component: {fileID: 771689805415257320}
   m_Layer: 5
-  m_Name: GameStatus 1
+  m_Name: GameStatus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,7 +213,7 @@ MonoBehaviour:
   scoreText: {fileID: 771689805138714783}
   gameOverText: {fileID: 771689805517261742}
   gameClearText: {fileID: 771689805526503540}
-  gameOverSubText: {fileID: 0}
+  gameOverSubText: {fileID: 771689805324592440}
   clock: {fileID: 771689806394787213}
 --- !u!1 &771689805517261742
 GameObject:
