@@ -7,13 +7,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject gameOverText;
     [SerializeField] GameObject gameClearText;
     [SerializeField] Text scoreText;
+    [SerializeField] Clock timerClock;
 
     const int MAX_SCORE = 9999;
     int score = 0;
+    [SerializeField] float time;
+    float initTime;
 
     private void Start()
     {
         scoreText.text = score.ToString();
+        initTime = time;
     }
 
     public void AddScore(int val)
@@ -41,5 +45,10 @@ public class GameManager : MonoBehaviour
     {
         Scene thisScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(thisScene.name);
+    }
+    private void Update()
+    {
+        time = time - Time.deltaTime;
+        timerClock.SetTime(time, initTime);
     }
 }
