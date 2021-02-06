@@ -51,6 +51,7 @@ public class PlayerManager : MonoBehaviour
         }
         if (IsGround())
         {
+ 
             if (Input.GetKeyDown("space"))
             {
                 Jump();
@@ -59,6 +60,10 @@ public class PlayerManager : MonoBehaviour
             {
                 animator.SetBool("isJumping", false);
             }
+        }
+        else
+        {
+            animator.SetBool("isJumping", true);
         }
     }
 
@@ -152,13 +157,16 @@ public class PlayerManager : MonoBehaviour
     {
         if (collision.gameObject.layer == 8)
         {
-            Debug.Log("BlockLayerOK");
             Block block = collision.gameObject.GetComponent<Block>();
             if(block.blockKind == BlockKind.Moving)
             {
                if (x == 0)
                 {
                     GetComponent<Transform>().position = collision.gameObject.transform.position + offset;
+                }
+                else
+                {
+                    offset = GetComponent<Transform>().position - collision.gameObject.transform.position;
                 }
             }
         }
@@ -168,7 +176,6 @@ public class PlayerManager : MonoBehaviour
         
         if (collision.gameObject.layer == 8)
         {
-            Debug.Log("BlockLayerOKEnter");
             Block block = collision.gameObject.GetComponent<Block>();
             if (block.blockKind == BlockKind.Moving)
             {

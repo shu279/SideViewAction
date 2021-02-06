@@ -20,6 +20,6 @@ public class MoveTileManager : MonoBehaviour
     }
     void FixedUpdate()
     {
-        rigid.MovePosition(new Vector3(defaultPos.x + Mathf.PingPong(Time.time, 1.7f) * 2, defaultPos.y , defaultPos.z));
+        rigid.MovePosition(new Vector3(defaultPos.x + Mathf.PingPong(Time.time, 1.9f) * 2, defaultPos.y , defaultPos.z));
     }
 }
