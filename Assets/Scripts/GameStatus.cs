@@ -33,18 +33,18 @@ public class GameStatus : MonoBehaviour
         switch (gameOverKind)
         {
             case GameOverKind.EnemyAttack:
-                gameOverSubText.GetComponent<Text>().text = "Killed by DemonRabbit";
+                gameOverSubText.GetComponent<Text>().text = "< Killed by DemonRabbit >";
                 gameOverSubText.SetActive(true);
                 break;
             case GameOverKind.TimeOver:
-                gameOverText.GetComponent<Text>().text = "TimeOver";
+                gameOverText.GetComponent<Text>().text = "TimeUp!";
                 break;
             case GameOverKind.Trap:
-                gameOverSubText.GetComponent<Text>().text = "Got caught in a Trap";
+                gameOverSubText.GetComponent<Text>().text = "< Got caught in a Trap >";
                 gameOverSubText.SetActive(true);
                 break;
             case GameOverKind.Fall:
-                gameOverSubText.GetComponent<Text>().text = "Fall into an Abyss";
+                gameOverSubText.GetComponent<Text>().text = "< Fall into an Abyss >";
                 gameOverSubText.SetActive(true);
                 break;
         }

@@ -14,7 +14,7 @@ public class EnemyManager : MonoBehaviour
 
     DIRECTION_TYPE direction = DIRECTION_TYPE.STOP;
 
-    Rigidbody2D rigidbody2D;
+    new Rigidbody2D rigidbody2D;
     float speed;
 
     private void Start()
