@@ -4,6 +4,7 @@ public class PlayerManager : MonoBehaviour
 {
     [SerializeField] GameManager gameManager;
     [SerializeField] LayerMask blockLayer;
+    [SerializeField] GameStatus gameStatus;
     float x;
     public enum DIRECTION_TYPE
     {
@@ -144,8 +145,9 @@ public class PlayerManager : MonoBehaviour
             }
         }
     }
-    void PlayerDeath(GameOverKind gameOverKind)
+    public void PlayerDeath(GameOverKind gameOverKind)
     {
+        gameStatus.gameStatusKind = GameStatus.Kind.GameOver;
         isDead = true;
         rigidbody2D.velocity = new Vector2(0, 0);
         rigidbody2D.AddForce(Vector2.up * jumpPower);

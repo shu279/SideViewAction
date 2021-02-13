@@ -13,6 +13,11 @@ public class GameStatus : MonoBehaviour
     [SerializeField] GameObject gameClearText;
     [SerializeField] GameObject gameOverSubText;
     public Clock clock;
+    public enum Kind
+    {
+        Playing,GameClear,GameOver
+    }
+    public Kind gameStatusKind = Kind.Playing;
     // Start is called before the first frame update
     void Start()
     {

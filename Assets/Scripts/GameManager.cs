@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     int score = 0;
     [SerializeField] float time;
     float initTime;
+    [SerializeField] PlayerManager playerManager;
 
     private void Start()
     {
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     }
     public void GameClear()
     {
+        gameStatus.gameStatusKind = GameStatus.Kind.GameClear;
         gameStatus.ShowGameClear();
         Invoke("RestartScene", 1.5f);
     }
@@ -42,12 +44,19 @@ public class GameManager : MonoBehaviour
         Scene thisScene = SceneManager.GetActiveScene();
         SceneManager.LoadScene(thisScene.name);
     }
-    private void Update()
+    private void FixedUpdate()
+    {
+       if (gameStatus.gameStatusKind == GameStatus.Kind.Playing)
+        {
+            CountDown();
+        }
+    }
+    private void CountDown()
     {
         time = time - Time.deltaTime;
-        if(time < 0)
+        if (time < 0)
         {
-            GameOver(GameOverKind.TimeOver);
+            playerManager.PlayerDeath(GameOverKind.TimeOver);
         }
         else
         {
