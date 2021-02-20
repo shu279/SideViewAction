@@ -11,8 +11,7 @@ public class SettingManager : MonoBehaviour
     void Start()
     {
         bGMSlider.value = PlayerPrefs.GetFloat("BGMScale");
-        float value = PlayerPrefs.GetFloat("SEScale");
-        Debug.Log(value);
+        sESlider.value = PlayerPrefs.GetFloat("SEScale");
     }
 
     // Update is called once per frame
@@ -26,7 +25,6 @@ public class SettingManager : MonoBehaviour
         {
             PlayerPrefs.SetFloat("BGMScale", bGMSlider.value);
             PlayerPrefs.SetFloat("SEScale", sESlider.value);
-            Debug.Log(bGMSlider.value);
         }
         else
         {
