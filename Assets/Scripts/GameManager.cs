@@ -10,10 +10,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] float time;
     float initTime;
     [SerializeField] PlayerManager playerManager;
+    AudioSource audioSource;
 
     private void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
+        audioSource.volume = PlayerPrefs.GetFloat("BGMScale");
         initTime = time;
     }
 
